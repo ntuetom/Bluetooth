@@ -38,14 +38,13 @@ public class MainActivity extends Activity {
 	private ToggleButton onoff;
 	private static BluetoothAdapter mBluetoothAdapter = null; // 用來搜尋、管理藍芽裝置
 	private static BluetoothSocket mBluetoothSocket = null; // 用來連結藍芽裝置、以及傳送指令
+	private BluetoothDevice device;
+	private StringBuilder sb = new StringBuilder();
 	private static final UUID MY_UUID = UUID
 			.fromString("00001101-0000-1000-8000-00805F9B34FB"); // 一定要是這組
-	private static OutputStream mOutputStream = null;
 	private static InputStream mInputStream = null;
-	private final int REQUEST_ENABLE_BT = 1;
-	private ArrayAdapter<String> adapter;
-	private ArrayList<String> items;
-	private ReadThread mReadthread;
+	private static String address = "00:13:03:13:80:05";
+	private Thread mConnectedThread;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +57,7 @@ public class MainActivity extends Activity {
 		onoff = (ToggleButton) this.findViewById(R.id.toggleButton1);
 		TV = (TextView) this.findViewById(R.id.textView1);
 
-		items = new ArrayList<String>();
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, items);
+		
 		
 		
 		Btnconnect.setOnClickListener(new View.OnClickListener() {
@@ -275,7 +272,7 @@ public class MainActivity extends Activity {
 	}
 
 	public String read() {
-		if (!((mOutputStream != null) && (mInputStream != null))) {
+		if (!(mInputStream != null)) {
 			Log.i(TAG, "Nothing");
 			return "";
 		}
