@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 	private BluetoothDevice device;
 	private StringBuilder sb = new StringBuilder();
 	private static final UUID MY_UUID = UUID
-			.fromString("00001101-0000-1000-8000-00805F9B34FB"); // 一定要是這組
+			.fromString("00001101-0000-1000-8000-00805F9B34FB"); // 一定要是這
 	private static InputStream mInputStream = null;
 	private static String address = "00:13:03:13:80:05";
 	private Thread mConnectedThread;
