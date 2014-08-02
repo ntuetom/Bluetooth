@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,9 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -52,28 +49,22 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Btnnext = (Button) this.findViewById(R.id.button1);
 		Btnconnect = (Button) this.findViewById(R.id.button2);
-		Btndisconnect = (Button) this.findViewById(R.id.button3);
-		
+		Btndisconnect = (Button) this.findViewById(R.id.button3);	
 		onoff = (ToggleButton) this.findViewById(R.id.toggleButton1);
 		TV = (TextView) this.findViewById(R.id.textView1);
 
-		
-		
-		
 		Btnconnect.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				searchBoundDevice();
 				searchnearDevice();
 			}
 		});
-
 		Btnnext.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this,CameraActivity.class);
 				startActivity(intent);
 			}
 		});
-
 		onoff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
@@ -83,8 +74,7 @@ public class MainActivity extends Activity {
 
 				}
 			}
-		});
-		
+		});		
 		Btndisconnect.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
@@ -93,54 +83,6 @@ public class MainActivity extends Activity {
 		
 
 	}
-
-//	// 註冊一個BroadcastReceiver，等等會用來接收搜尋到裝置的消息
-//	private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-//		public void onReceive(Context context, Intent intent) {
-//			// 當收尋到裝置時
-//			String action = intent.getAction();
-//			if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-//				// 取得藍芽裝置這個物件
-//				BluetoothDevice device = intent
-//						.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-//				items.add(device.getName());
-//				myLV.setAdapter(adapter);
-//				// 判斷那個裝置是不是你要連結的裝置，根據藍芽裝置名稱判斷
-//				if (device.getName().equals("linvor")) {
-//					try {
-//						// 一進來一定要停止搜尋
-//						mBluetoothAdapter.cancelDiscovery();
-//						// 連結到該裝置
-//						mBluetoothSocket = device
-//								.createRfcommSocketToServiceRecord(MY_UUID);
-//						Toast.makeText(MainActivity.this, "已連接裝置",
-//								Toast.LENGTH_SHORT).show();
-//						mBluetoothSocket.connect();
-//						while (true) {
-//							try{
-//							// 取得 output input
-//							// mOutputStream =
-//							// mBluetoothSocket.getOutputStream();
-//							mInputStream = mBluetoothSocket.getInputStream();
-//							// // 送出訊息
-//							// String message = "hello";
-//							// mOutputStream.write(message.getBytes());
-//							TV.setText(read());
-//							}
-//							catch (IOException e){
-//								break;
-//							}
-//						}
-//
-//					} catch (IOException e) {
-//
-//					}
-//				}
-//
-//			}
-//		}
-//
-//	};
 	
 	private Handler mhandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -366,11 +308,11 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		return true;
+//	}
 
 }
