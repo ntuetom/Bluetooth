@@ -59,9 +59,11 @@ public class MainActivity extends Activity {
 				searchnearDevice();
 			}
 		});
-		Btnnext.setOnClickListener(new View.OnClickListener() {
+		Btnnext.setOnClickListener(new View.OnClickListener() 
+		{
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this,CameraActivity.class);
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this,Photo.class);				
 				startActivity(intent);
 			}
 		});
